@@ -1,16 +1,21 @@
 import * as yup from "yup";
 
 export const loginSchema = yup.object({
-  email: yup.string().email().required(),
-  password: yup.string().required(),
+  email: yup
+    .string()
+    .email()
+    .required("Por favor, verifique se seu email está correto"),
+  password: yup
+    .string()
+    .required("Por favor, verifique se sua senha está correta"),
 });
 
 export const registerSchema = yup.object().shape({
-  name: yup.string().required(),
-  email: yup.string().email().required(),
+  name: yup.string().required("Nome é obrigatório"),
+  email: yup.string().email().required("Email é obrigatório"),
   password: yup
     .string()
-    .required()
+    .required("Senha é obrigatória")
     .matches(/[A-Z]/, "deve conter ao menos 1 letra maiúscula")
     .matches(/([a-z])/, "deve conter ao menos 1 letra minúscula")
     .matches(/(\d)/, "deve conter ao menos 1 número")
@@ -21,8 +26,9 @@ export const registerSchema = yup.object().shape({
     .oneOf(
       [yup.ref("password")],
       "A senha deve ser igual a passada anteriormente"
-    ),
-  bio: yup.string().required(),
-  contact: yup.string().required(),
-  course_module: yup.string().required(),
+    )
+    .required("Confirmação de senha é obrigatória"),
+  bio: yup.string().required("Bio é obrigatório"),
+  contact: yup.string().required("Contato é obrigatório"),
+  course_module: yup.string().required("Modulo é obrigatório"),
 });

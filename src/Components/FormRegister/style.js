@@ -51,9 +51,22 @@ export const ContainerFormRegister = styled.div`
       }
     }
 
+    p {
+      font-family: "Inter", sans-serif;
+      font-weight: 600;
+      font-size: 13px;
+      color: #ff0000bf;
+
+      margin-top: -13px;
+      margin-bottom: 18px;
+    }
+
     select {
       height: 38.5px;
       background-color: #343b41;
+
+      padding: 0 13px;
+      margin-bottom: 21px;
 
       border: none;
       border-radius: 4px;
@@ -81,7 +94,7 @@ export const ContainerFormRegister = styled.div`
       border-radius: 4px;
       background-color: #343b41;
 
-      margin: 30px 0;
+      margin: 5px 0 30px 0;
     }
   }
 `;

@@ -61,13 +61,15 @@ const FormLogin = () => {
           {...register("email")}
         />
         <p>{errors.email?.message}</p>
-        <label htmlFor="senha">Senha</label>
+        <label htmlFor="password">Senha</label>
         <input
           type="password"
-          id="senha"
+          id="password"
           placeholder="Digite sua senha"
           {...register("password")}
         />
+        <p>{errors.password?.message}</p>
+
         <button type="submit">Entrar</button>
       </form>
       <ContainerCadastrar>

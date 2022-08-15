@@ -51,6 +51,16 @@ export const ContainerFormLogin = styled.div`
       }
     }
 
+    p {
+      font-family: "Inter", sans-serif;
+      font-weight: 600;
+      font-size: 13px;
+      color: #ff0000bf;
+
+      margin-top: -13px;
+      margin-bottom: 18px;
+    }
+
     button {
       height: 38.5px;
 

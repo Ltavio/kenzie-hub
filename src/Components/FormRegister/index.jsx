@@ -106,16 +106,21 @@ const FormRegister = () => {
         />
         <p>{errors.contact?.message}</p>
 
-        <label htmlFor="modulos">Selecionar Módulo</label>
-        <select id="modulo" {...register("course_module")}>
-          <option value="modulo1">
-            Primeiro módulo (Introdução ao Frontend)
+        <label htmlFor="course_module">Selecionar Módulo</label>
+        <select id="course_module" {...register("course_module")}>
+          <option value="">Selecionar módulo</option>
+          <option value="Primeiro módulo (Introdução ao Frontend)">
+            Primeiro módulo
           </option>
-          <option value="modulo2">Segundo módulo (Frontend Avançado)</option>
-          <option value="modulo3">
-            Terceiro módulo (Introdução ao Backend)
+          <option value="Segundo módulo (Frontend Avançado)">
+            Segundo módulo
           </option>
-          <option value="modulo4">Quarto módulo (Backend Avançado)</option>
+          <option value="Terceiro módulo (Introdução ao Backend)">
+            Terceiro módulo
+          </option>
+          <option value="Quarto módulo (Backend Avançado)">
+            Quarto módulo
+          </option>
         </select>
 
         <p>{errors.course_module?.message}</p>
