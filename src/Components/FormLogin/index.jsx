@@ -5,7 +5,7 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import { useNavigate } from "react-router-dom";
 import { loginSchema } from "../../Validacoes";
 
-import { AuthContext } from "../../contexts/authContext";
+import { AuthContext } from "../../providers/authContext";
 
 const FormLogin = () => {
   const {

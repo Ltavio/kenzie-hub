@@ -41,7 +41,9 @@ const CadastrarTecnologia = ({ setModalCreateTec }) => {
 
           <label htmlFor="nomeTecnologia">Selecione status</label>
           <select type="text" id="statusTecnologia" {...register("status")}>
-            <option value="">Selecione aqui</option>
+            <option value="" disabled selected>
+              Selecione aqui
+            </option>
             <option value="Iniciante">Iniciante</option>
             <option value="Intermediário">Intermediário</option>
             <option value="Avançado">Avançado</option>

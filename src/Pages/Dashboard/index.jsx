@@ -9,17 +9,15 @@ import {
 import Logo from "../../Logo.png";
 import { useContext, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import axios from "axios";
 import { MdOutlineAdd, MdDelete } from "react-icons/md";
-import Modal from "../../Modals/ModalDefault";
 import CadastrarTecnologia from "../../Modals/AdicionarTecnologias";
 import RemoverTecnologia from "../../Modals/RemoverTecnologia";
 import EditarTecnologia, { handleEdit } from "../../Modals/EditarTecnologia";
-import AuthProviter, { AuthContext } from "../../contexts/authContext";
+import AuthProviter, { AuthContext } from "../../providers/authContext";
 
 const Dashboard = () => {
   const autenticacao = JSON.parse(localStorage.getItem("@KENZIEHUB:TOKEN"));
-  const idAutenticacao = JSON.parse(localStorage.getItem("@KENZIEHUB:USERID"));
+
   const navigate = useNavigate();
 
   //modais
@@ -27,7 +25,7 @@ const Dashboard = () => {
   const [modalRemoveTec, setModalRemoveTec] = useState(false);
   const [modalEditTec, setModalEditTec] = useState(false);
 
-  const { user, techs, removeItem, setIdTech } = useContext(AuthContext);
+  const { user, techs, removeItem, setEditTech } = useContext(AuthContext);
 
   const token = JSON.parse(localStorage.getItem("@KENZIEHUB:TOKEN"));
 
@@ -37,15 +35,16 @@ const Dashboard = () => {
     }
   }, [autenticacao]);
 
+  //voltar ao login
   const handleLogout = () => {
     localStorage.clear();
     navigate("/login", { replace: true });
   };
 
   /* handleEdit */
-  const handleEditTech = (id) => {
+  const handleEditTech = (tecnologia) => {
     setModalEditTec(true);
-    setIdTech(id);
+    setEditTech(tecnologia);
   };
 
   return (
@@ -83,7 +82,7 @@ const Dashboard = () => {
         <ContainerTecnologias>
           {techs.map((tech) => (
             <div className="tecnologias" key={tech.id}>
-              <div onClick={() => handleEditTech(tech.id)}>
+              <div onClick={() => handleEditTech(tech)}>
                 <h4>{tech.title}</h4>
                 <p>{tech.status}</p>
               </div>

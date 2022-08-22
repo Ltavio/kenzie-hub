@@ -9,7 +9,9 @@ const AuthProviter = ({ children }) => {
   const [loginLoading, setLoginLoading] = useState(true);
   const [user, setUser] = useState({});
   const [techs, setTechs] = useState([]);
-  const [idTech, setIdTech] = useState("");
+
+  //estado para edição de tecnologia
+  const [editTech, setEditTech] = useState({});
 
   const token = JSON.parse(localStorage.getItem("@KENZIEHUB:TOKEN"));
   const idUser = JSON.parse(localStorage.getItem("@KENZIEHUB:USERID"));
@@ -96,8 +98,8 @@ const AuthProviter = ({ children }) => {
         registerLogin,
         btnRegis,
         removeItem,
-        setIdTech,
-        idTech,
+        setEditTech,
+        editTech,
         loginLoading,
         user,
         techs,

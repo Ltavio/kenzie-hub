@@ -8,7 +8,7 @@ import { ContainerFormRegister } from "./style";
 import { toast } from "react-toastify";
 
 import { registerSchema } from "../../Validacoes";
-import { AuthContext } from "../../contexts/authContext";
+import { AuthContext } from "../../providers/authContext";
 
 const FormRegister = () => {
   const {
