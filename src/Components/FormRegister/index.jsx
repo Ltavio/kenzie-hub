@@ -2,16 +2,15 @@ import axios from "axios";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { useNavigate } from "react-router-dom";
-import { useState } from "react";
+import { useContext, useState } from "react";
 
 import { ContainerFormRegister } from "./style";
 import { toast } from "react-toastify";
 
 import { registerSchema } from "../../Validacoes";
+import { AuthContext } from "../../contexts/authContext";
 
 const FormRegister = () => {
-  const [loading, setLoading] = useState(false);
-
   const {
     register,
     handleSubmit,
@@ -20,28 +19,7 @@ const FormRegister = () => {
     resolver: yupResolver(registerSchema),
   });
 
-  const navigate = useNavigate();
-
-  const btnRegis = (data) => {
-    console.log(data);
-    setLoading(true);
-
-    axios
-      .post("https://kenziehub.herokuapp.com/users/", data)
-      .then((_) => {
-        setLoading(false);
-
-        toast.success("Conta criada com sucesso!");
-
-        setTimeout(() => {
-          navigate("/login", { replace: true });
-        }, 2000);
-      })
-      .catch((_) => {
-        setLoading(false);
-        toast.error("Ops! Algo deu errado");
-      });
-  };
+  const { btnRegis } = useContext(AuthContext);
 
   return (
     <ContainerFormRegister>

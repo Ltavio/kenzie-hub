@@ -1,15 +1,13 @@
+import { useContext } from "react";
 import { useForm } from "react-hook-form";
 import { ContainerCadastrar, ContainerFormLogin } from "./style";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { useNavigate } from "react-router-dom";
 import { loginSchema } from "../../Validacoes";
-import axios from "axios";
-import { useState } from "react";
-import { toast } from "react-toastify";
+
+import { AuthContext } from "../../contexts/authContext";
 
 const FormLogin = () => {
-  const [loginLoading, setLoginLoading] = useState(false);
-
   const {
     register,
     handleSubmit,
@@ -20,31 +18,7 @@ const FormLogin = () => {
 
   const navigate = useNavigate();
 
-  const registerLogin = (data) => {
-    setLoginLoading(true);
-
-    axios
-      .post("https://kenziehub.herokuapp.com/sessions", data)
-      .then((resp) => {
-        setLoginLoading(false);
-
-        const { token } = resp.data;
-        const { id } = resp.data.user;
-
-        localStorage.setItem("@TOKEN", JSON.stringify(token));
-        localStorage.setItem("@USERID", JSON.stringify(id));
-
-        toast.success("Login efetuado com sucesso");
-
-        setTimeout(() => {
-          navigate("/dashboard", { replace: true });
-        }, 2000);
-      })
-      .catch((err) => {
-        setLoginLoading(false);
-        toast.error("Ops! Algo deu errado");
-      });
-  };
+  const { registerLogin, loginLoading } = useContext(AuthContext);
 
   const handleRegis = () => {
     navigate("/register", { replace: true });
