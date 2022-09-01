@@ -1,6 +1,7 @@
-import { BoxRegister, Cabecalho, Container } from "./style";
+import React from "react";
+import { BoxRegister, Cabecalho, Container } from "./style.ts";
 import Logo from "../../Logo.png";
-import FormRegister from "../../Components/FormRegister";
+import FormRegister from "../../Components/FormRegister/index.tsx";
 import { useNavigate } from "react-router-dom";
 
 const Register = () => {

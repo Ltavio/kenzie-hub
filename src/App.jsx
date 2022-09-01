@@ -1,17 +1,17 @@
 import "./App.css";
 import { Toast } from "./Components/toast";
-import AuthProviter from "./providers/authContext";
-import RouteMain from "./Routers";
-import { Global } from "./Style/global";
+import AuthProvidersMain from "./providers/index.tsx";
+import RouteMain from "./Routers/index.tsx";
+import { Global } from "./Style/global.ts";
 
 function App() {
   return (
     <>
-      <AuthProviter>
+      <AuthProvidersMain>
         <Global />
         <RouteMain />
         <Toast />
-      </AuthProviter>
+      </AuthProvidersMain>
     </>
   );
 }

@@ -7,59 +7,40 @@ import {
   NavBar,
 } from "./style";
 import Logo from "../../Logo.png";
-import { useContext, useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useContext } from "react";
 import { MdOutlineAdd, MdDelete } from "react-icons/md";
 import CadastrarTecnologia from "../../Modals/AdicionarTecnologias";
 import RemoverTecnologia from "../../Modals/RemoverTecnologia";
 import EditarTecnologia, { handleEdit } from "../../Modals/EditarTecnologia";
-import AuthProviter, { AuthContext } from "../../providers/authContext";
+import { AuthContextDashboard } from "../../providers/authContextDashboard.tsx";
+import { AuthContextLogin } from "../../providers/authContextLogin.tsx";
 
 const Dashboard = () => {
-  const autenticacao = JSON.parse(localStorage.getItem("@KENZIEHUB:TOKEN"));
+  const { user, techs, setEditTech } = useContext(AuthContextLogin);
 
-  const navigate = useNavigate();
-
-  //modais
-  const [modalCreateTec, setModalCreateTec] = useState(false);
-  const [modalRemoveTec, setModalRemoveTec] = useState(false);
-  const [modalEditTec, setModalEditTec] = useState(false);
-
-  const { user, techs, removeItem, setEditTech } = useContext(AuthContext);
-
-  const token = JSON.parse(localStorage.getItem("@KENZIEHUB:TOKEN"));
-
-  useEffect(() => {
-    if (!autenticacao) {
-      return navigate("/login", { replace: true });
-    }
-  }, [autenticacao]);
-
-  //voltar ao login
-  const handleLogout = () => {
-    localStorage.clear();
-    navigate("/login", { replace: true });
-  };
-
-  /* handleEdit */
-  const handleEditTech = (tecnologia) => {
-    setModalEditTec(true);
-    setEditTech(tecnologia);
-  };
+  const {
+    removeItem,
+    handleEditTech,
+    handleLogout,
+    setModalCreateTec,
+    setModalRemoveTec,
+    setModalEditTec,
+    modalCreateTec,
+    modalRemoveTec,
+    modalEditTec,
+  } = useContext(AuthContextDashboard);
 
   return (
     <Container>
-      {modalCreateTec ? (
+      {modalCreateTec && (
         <CadastrarTecnologia setModalCreateTec={setModalCreateTec} />
-      ) : null}
+      )}
 
-      {modalRemoveTec ? (
+      {modalRemoveTec && (
         <RemoverTecnologia setModalRemoveTec={setModalRemoveTec} />
-      ) : null}
+      )}
 
-      {modalEditTec ? (
-        <EditarTecnologia setModalEditTec={setModalEditTec} />
-      ) : null}
+      {modalEditTec && <EditarTecnologia setModalEditTec={setModalEditTec} />}
 
       <NavBar>
         <img src={Logo} alt="logo-kenziehub" />

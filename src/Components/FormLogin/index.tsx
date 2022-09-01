@@ -1,24 +1,26 @@
+import React from "react";
 import { useContext } from "react";
 import { useForm } from "react-hook-form";
-import { ContainerCadastrar, ContainerFormLogin } from "./style";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { useNavigate } from "react-router-dom";
+import { ContainerCadastrar, ContainerFormLogin } from "./style";
 import { loginSchema } from "../../Validacoes";
 
-import { AuthContext } from "../../providers/authContext";
+import { AuthContextLogin } from "../../providers/authContextLogin";
+import { IUserLogin } from "../../Types/contextLoginTyps";
 
 const FormLogin = () => {
   const {
     register,
     handleSubmit,
     formState: { errors },
-  } = useForm({
+  } = useForm<IUserLogin>({
     resolver: yupResolver(loginSchema),
   });
 
-  const navigate = useNavigate();
+  const { registerLogin } = useContext(AuthContextLogin);
 
-  const { registerLogin, loginLoading } = useContext(AuthContext);
+  const navigate = useNavigate();
 
   const handleRegis = () => {
     navigate("/register", { replace: true });

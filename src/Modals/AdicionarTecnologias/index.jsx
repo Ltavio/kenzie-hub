@@ -1,9 +1,6 @@
-/* import {} from "./style" */
-/* import { useForm } from "react-hook-form"; */
-import axios from "axios";
-import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { IoClose } from "react-icons/io5";
+import api from "../../services/Api.ts";
 
 import Modal from "../ModalDefault";
 import { BoxFormulario } from "./style";
@@ -15,7 +12,7 @@ const CadastrarTecnologia = ({ setModalCreateTec }) => {
 
   const cadastrandoTec = async (data) => {
     setModalCreateTec(false);
-    await axios.post("https://kenziehub.herokuapp.com/users/techs", data, {
+    await api.post("/users/techs", data, {
       headers: {
         Authorization: `Bearer ${token}`,
       },

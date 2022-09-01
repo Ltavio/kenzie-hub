@@ -3,21 +3,21 @@ import Modal from "../ModalDefault";
 import { BoxFormularioEdit } from "./style";
 import { IoClose } from "react-icons/io5";
 import { useContext } from "react";
-import { AuthContext } from "../../providers/authContext";
-import axios from "axios";
+import api from "../../services/Api.ts";
+import { AuthContextLogin } from "../../providers/authContextLogin.tsx";
 
 const EditarTecnologia = ({ setModalEditTec }) => {
   const { register, handleSubmit } = useForm();
 
-  const { editTech } = useContext(AuthContext);
+  const { editTech } = useContext(AuthContextLogin);
 
   const handleEdit = async (data) => {
     const token = JSON.parse(localStorage.getItem("@KENZIEHUB:TOKEN"));
 
     setModalEditTec(false);
 
-    await axios.put(
-      `https://kenziehub.herokuapp.com/users/techs/${editTech.id}`,
+    await api.put(
+      `/users/techs/${editTech.id}`,
       { status: data.status },
       {
         headers: {

@@ -1,25 +1,23 @@
-import axios from "axios";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
-import { useNavigate } from "react-router-dom";
 import { useContext, useState } from "react";
 
 import { ContainerFormRegister } from "./style";
-import { toast } from "react-toastify";
 
 import { registerSchema } from "../../Validacoes";
-import { AuthContext } from "../../providers/authContext";
+import { AuthContextRegister } from "../../providers/authContextRegister";
+import { IUserRegister } from "../../Types/contextRegisterTyps";
 
 const FormRegister = () => {
   const {
     register,
     handleSubmit,
     formState: { errors },
-  } = useForm({
+  } = useForm<IUserRegister>({
     resolver: yupResolver(registerSchema),
   });
 
-  const { btnRegis } = useContext(AuthContext);
+  const { btnRegis } = useContext(AuthContextRegister);
 
   return (
     <ContainerFormRegister>
