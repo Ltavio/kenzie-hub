@@ -1,6 +1,6 @@
-import React from "react";
+import React, { Dispatch, SetStateAction } from "react";
 import { createContext, useEffect, useState } from "react";
-import api from "../services/Api.ts";
+import api from "../services/Api";
 import { toast } from "react-toastify";
 import { useNavigate } from "react-router-dom";
 
@@ -13,7 +13,13 @@ import {
   IEditTechs,
 } from "../Types/contextLoginTyps";
 
-export const AuthContextLogin = createContext<any>({});
+interface ILogin {
+  setEditTech: Dispatch<SetStateAction<IEditTechs>>;
+  setLoginLoading: Dispatch<SetStateAction<boolean | IStatesLoading>>;
+  registerLogin: (data: IUserLogin) => Promise<void>;
+}
+
+export const AuthContextLogin = createContext({} as ILogin);
 
 const AuthProviderLogin = ({ children }: IChildren) => {
   const [loginLoading, setLoginLoading] = useState<IStatesLoading | boolean>(
@@ -57,7 +63,7 @@ const AuthProviderLogin = ({ children }: IChildren) => {
         localStorage.setItem("@KENZIEHUB:TOKEN", JSON.stringify(token));
         localStorage.setItem("@KENZIEHUB:USERID", JSON.stringify(id));
 
-        api.defaults.headers.Authorization = ` ${token}`;
+        /* api.defaults.headers.Authorization = ` ${token}`; */
 
         toast.success("Login efetuado com sucesso");
 

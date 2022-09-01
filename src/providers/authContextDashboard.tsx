@@ -7,8 +7,8 @@ import {
   ReactNode,
 } from "react";
 import { useNavigate } from "react-router-dom";
-import api from "../services/Api.ts";
-import { AuthContextLogin } from "./authContextLogin.tsx";
+import api from "../services/Api";
+import { AuthContextLogin } from "./authContextLogin";
 
 import {
   IChildrenDashboard,
@@ -39,7 +39,6 @@ const AuthProviderDashboard = ({ children }: IChildrenDashboard) => {
   //voltar para a tela de login
   const handleLogout = () => {
     localStorage.clear();
-    api.defaults.headers.Authorization = null;
 
     navigate("/login", { replace: true });
   };

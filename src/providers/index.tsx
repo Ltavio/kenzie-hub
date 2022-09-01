@@ -1,9 +1,9 @@
 import React from "react";
-import AuthProviderDashboard from "./authContextDashboard.tsx";
-import AuthProviderLogin from "./authContextLogin.tsx";
-import AuthProviderRegister from "./authContextRegister.tsx";
+import AuthProviderDashboard from "./authContextDashboard";
+import AuthProviderLogin from "./authContextLogin";
+import AuthProviderRegister from "./authContextRegister";
 
-const AuthProvidersMain = ({ children }) => {
+const AuthProvidersMain = ({ children }: any) => {
   return (
     <AuthProviderLogin>
       <AuthProviderRegister>

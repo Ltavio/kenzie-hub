@@ -1,10 +1,10 @@
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
-import { useContext, useState } from "react";
+import React, { useContext, useState } from "react";
 
 import { ContainerFormRegister } from "./style";
 
-import { registerSchema } from "../../Validacoes";
+import { registerSchema } from "../../Validacoes/index";
 import { AuthContextRegister } from "../../providers/authContextRegister";
 import { IUserRegister } from "../../Types/contextRegisterTyps";
 

@@ -4,7 +4,7 @@ import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { useNavigate } from "react-router-dom";
 import { ContainerCadastrar, ContainerFormLogin } from "./style";
-import { loginSchema } from "../../Validacoes";
+import { loginSchema } from "../../Validacoes/index";
 
 import { AuthContextLogin } from "../../providers/authContextLogin";
 import { IUserLogin } from "../../Types/contextLoginTyps";

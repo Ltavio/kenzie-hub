@@ -1,11 +1,15 @@
+import React from "react";
 import { useForm } from "react-hook-form";
 import { IoClose } from "react-icons/io5";
-import api from "../../services/Api.ts";
-
+import api from "../../services/Api";
 import Modal from "../ModalDefault";
 import { BoxFormulario } from "./style";
 
-const CadastrarTecnologia = ({ setModalCreateTec }) => {
+interface ICadTecnologia {
+  setModalCreateTec: (setModalCreateTec: boolean) => void;
+}
+
+const CadastrarTecnologia = ({ setModalCreateTec }: ICadTecnologia) => {
   const { register, handleSubmit } = useForm();
 
   const token = JSON.parse(localStorage.getItem("@KENZIEHUB:TOKEN"));

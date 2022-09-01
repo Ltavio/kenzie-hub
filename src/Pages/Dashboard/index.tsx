@@ -7,13 +7,13 @@ import {
   NavBar,
 } from "./style";
 import Logo from "../../Logo.png";
-import { useContext } from "react";
+import React, { useContext } from "react";
 import { MdOutlineAdd, MdDelete } from "react-icons/md";
-import CadastrarTecnologia from "../../Modals/AdicionarTecnologias";
+import CadastrarTecnologia from "../../Modals/AdicionarTecnologias/index";
 import RemoverTecnologia from "../../Modals/RemoverTecnologia";
 import EditarTecnologia, { handleEdit } from "../../Modals/EditarTecnologia";
-import { AuthContextDashboard } from "../../providers/authContextDashboard.tsx";
-import { AuthContextLogin } from "../../providers/authContextLogin.tsx";
+import { AuthContextDashboard } from "../../providers/authContextDashboard";
+import { AuthContextLogin } from "../../providers/authContextLogin";
 
 const Dashboard = () => {
   const { user, techs, setEditTech } = useContext(AuthContextLogin);

@@ -1,13 +1,17 @@
 import React from "react";
 import { createContext, ReactNode, useContext } from "react";
-import api from "../services/Api.ts";
+import api from "../services/Api";
 import { toast } from "react-toastify";
 import { useNavigate } from "react-router-dom";
-import { AuthContextLogin } from "./authContextLogin.tsx";
+import { AuthContextLogin } from "./authContextLogin";
 
 import { IChildrenRegister, IUserRegister } from "../Types/contextRegisterTyps";
 
-export const AuthContextRegister = createContext({});
+interface IRegister {
+  btnRegis: (data: IUserRegister) => void;
+}
+
+export const AuthContextRegister = createContext({} as IRegister);
 
 const AuthProviderRegister = ({ children }: IChildrenRegister) => {
   const { setLoginLoading } = useContext(AuthContextLogin);
